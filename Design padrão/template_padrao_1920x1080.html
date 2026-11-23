@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assifarma — Catálogo Oficial 2026 | Padrão Visual 1920x1080</title>
+
+  <!-- Google Fonts: Sora e Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --page-w: 1920px;
+      --page-h: 1080px;
+
+      /* Cores Oficiais */
+      --brand-blue: #175da9;
+      --brand-blue-dark: #123f77;
+      --brand-navy: #152c52;
+      --badge-navy: #193868;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-table: #000000;
+      --divider-blue: #175da9;
+
+      /* Tipografia */
+      --font-brand: 'Sora', sans-serif;
+      --font-table: 'Arial', 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0b1120;
+      font-family: var(--font-brand);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .catalog-toolbar {
+      width: var(--page-w);
+      max-width: 95vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 16px 28px;
+      color: #fff;
+    }
+
+    .toolbar-title {
+      font-size: 20px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .toolbar-title span.tag {
+      background: var(--brand-blue);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .toolbar-info {
+      font-size: 14px;
+      color: #94a3b8;
+    }
+
+    /* PÁGINA 1920x1080 PAISAGEM */
+    .catalog-page {
+      width: var(--page-w);
+      height: var(--page-h);
+      position: relative;
+      background: #ffffff;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      page-break-after: always;
+      break-after: page;
+    }
+
+    /* ==========================================================================
+       ESTRUTURA 50% / 50%
+       ========================================================================== */
+    .zone-top-50 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1920px;
+      height: 540px;
+      overflow: hidden;
+      background-color: #eef2f6;
+    }
+
+    .zone-bottom-50 {
+      position: absolute;
+      top: 540px;
+      left: 0;
+      width: 1920px;
+      height: 540px;
+      background-color: #ffffff;
+    }
+
+    /* FOTOGRAFIA DE FUNDO NO TOPO */
+    .top-bg-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    .page-a .top-bg-photo {
+      object-position: right center;
+    }
+    .page-a .top-bg-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(238, 242, 246, 1) 0%,
+        rgba(238, 242, 246, 0.98) 25%,
+        rgba(238, 242, 246, 0.85) 45%,
+        rgba(238, 242, 246, 0.25) 68%,
+        rgba(238, 242, 246, 0) 100%
+      );
+    }
+
+    .page-b .top-bg-photo {
+      object-position: left center;
+    }
+    .page-b .top-bg-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        270deg,
+        rgba(238, 242, 246, 1) 0%,
+        rgba(238, 242, 246, 0.98) 25%,
+        rgba(238, 242, 246, 0.85) 45%,
+        rgba(238, 242, 246, 0.25) 68%,
+        rgba(238, 242, 246, 0) 100%
+      );
+    }
+
+    /* ABA SUPERIOR COM NOME DA LINHA */
+    .brand-tab {
+      position: absolute;
+      top: 24px;
+      z-index: 20;
+      height: 52px;
+      display: flex;
+      align-items: center;
+    }
+    .page-a .brand-tab {
+      left: 0;
+      padding-left: 54px;
+      padding-right: 48px;
+    }
+    .page-b .brand-tab {
+      right: 0;
+      padding-right: 54px;
+      padding-left: 48px;
+    }
+    .brand-tab-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+    }
+    .brand-tab-label {
+      color: #ffffff;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    /* FAIXA DIVISÓRIA VETORIAL (50% LINE) */
+    .divider-stripe {
+      position: absolute;
+      top: 520px;
+      left: 0;
+      width: 1920px;
+      height: 28px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       COLUNA 1: TABELA NUTRICIONAL (AUTÔNOMA, ELEGANTE E TOTALMENTE NÍTIDA)
+       ========================================================================== */
+    .nutrition-table-container {
+      position: absolute;
+      top: 60px;
+      bottom: 60px;
+      width: 440px;
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .page-a .nutrition-table-container {
+      left: 120px;
+    }
+    .page-b .nutrition-table-container {
+      right: 120px;
+    }
+
+    .nutrition-card-box {
+      background: #ffffff;
+      border: 2px solid var(--border-table);
+      border-radius: 4px;
+      padding: 14px 18px;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+      font-family: var(--font-table);
+    }
+
+    .nutrition-card-title {
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      text-align: center;
+      color: #000;
+      border-bottom: 2px solid #000;
+      padding-bottom: 3px;
+      margin-bottom: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    .nutrition-card-meta {
+      font-size: 11px;
+      color: #000;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+
+    .nutrition-grid-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+    }
+
+    .nutrition-grid-table th {
+      font-weight: 700;
+      color: #000;
+      border-bottom: 1.5px solid #000;
+      padding: 3px 2px;
+      text-align: left;
+    }
+
+    .nutrition-grid-table th.col-right,
+    .nutrition-grid-table td.col-right {
+      text-align: right;
+    }
+
+    .nutrition-grid-table td {
+      padding: 2.8px 2px;
+      border-bottom: 1px solid #d1d5db;
+      color: #111;
+    }
+
+    .nutrition-grid-table tr:last-child td {
+      border-bottom: 1.5px solid #000;
+    }
+
+    .nutrition-card-footer {
+      font-size: 9px;
+      color: #374151;
+      margin-top: 5px;
+      line-height: 1.25;
+    }
+
+    /* ==========================================================================
+       COLUNA 2: PRODUTO HERO (PACKSHOT GIGANTE NO TOPO + DETALHES NA BASE)
+       ========================================================================== */
+    .product-center-column {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 600px;
+      width: 720px;
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+    }
+    .page-b .product-center-column {
+      left: 600px; /* Mantém centralizado em ambas */
+    }
+
+    /* PACKSHOT DO PRODUTO (NO TOPO: 450px DE ALTURA, IMAGEM GIGANTE) */
+    .packshot-top-hero {
+      width: 100%;
+      height: 520px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 10px;
+      position: relative;
+    }
+
+    .packshot-top-hero img {
+      max-height: 440px;
+      max-width: 480px;
+      width: auto;
+      height: 430px;
+      object-fit: contain;
+      filter: drop-shadow(0 26px 36px rgba(15, 23, 42, 0.4));
+      transition: transform 0.3s ease;
+    }
+
+    /* BLOCO INFERIOR DO PRODUTO (NA BASE BRANCA, TOTALMENTE NÍTIDO E SEM MISTURA) */
+    .product-bottom-info {
+      width: 100%;
+      height: 520px;
+      padding-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .product-header-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .product-sub-category {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .product-hero-name-row {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .product-hero-title {
+      font-size: 54px;
+      font-weight: 800;
+      color: var(--brand-navy);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .product-pack-badge {
+      font-size: 18px;
+      font-weight: 500;
+      color: #334155;
+    }
+
+    /* BENEFÍCIOS IN 28 (COM ÍCONES E NEGRITO REGULATÓRIO BEM ESPAÇADOS) */
+    .benefits-structured-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: 100%;
+      margin-top: 6px;
+    }
+
+    .benefit-item-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .benefit-svg-icon {
+      width: 26px;
+      height: 26px;
+      flex-shrink: 0;
+      color: var(--brand-blue);
+      margin-top: 2px;
+    }
+
+    .benefit-paragraph {
+      font-size: 14px;
+      line-height: 1.45;
+      color: #334155;
+    }
+
+    .benefit-paragraph b {
+      color: var(--brand-navy);
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       DIVISOR VERTICAL COM PONTOS (ENTRE COLUNA 2 E COLUNA 3)
+       ========================================================================== */
+    .vertical-timeline {
+      position: absolute;
+      top: 580px;
+      bottom: 80px;
+      width: 12px;
+      z-index: 25;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .page-a .vertical-timeline {
+      left: 1350px;
+    }
+    .page-b .vertical-timeline {
+      left: 560px;
+    }
+
+    .timeline-circle {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--divider-blue);
+    }
+    .timeline-stem {
+      width: 1.5px;
+      height: 100%;
+      background: var(--divider-blue);
+    }
+
+    /* ==========================================================================
+       COLUNA 3: FRASE DE EFEITO, DESTAQUES E BADGES
+       ========================================================================== */
+    .creative-column {
+      position: absolute;
+      top: 540px;
+      bottom: 60px;
+      width: 400px;
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 24px;
+      gap: 28px;
+    }
+    .page-a .creative-column {
+      left: 1400px;
+    }
+    .page-b .creative-column {
+      left: 120px;
+    }
+
+    .creative-header-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .creative-disclaimer {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    .creative-intro {
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--brand-blue);
+      line-height: 1.1;
+    }
+
+    .creative-number-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 2px;
+    }
+
+    .creative-huge-num {
+      font-size: 80px;
+      font-weight: 800;
+      color: var(--brand-blue);
+      line-height: 0.88;
+    }
+
+    .creative-sub-text {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--brand-blue);
+      line-height: 1.15;
+    }
+
+    /* BADGES / SELOS (AZUL ESCURO SÓLIDO, ALTO CONTRASTE) */
+    .badges-pill-column {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 250px;
+    }
+
+    .badge-pill-item {
+      background: var(--badge-navy);
+      color: #ffffff;
+      padding: 11px 24px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(25, 56, 104, 0.25);
+      letter-spacing: 0.02em;
+    }
+
+    /* ==========================================================================
+       IMPRESSÃO E EXPORTAÇÃO EM PDF (1920x1080)
+       ========================================================================== */
+    @page {
+      size: 1920px 1080px;
+      margin: 0;
+    }
+
+    @media print {
+      html, body {
+        width: 1920px;
+        height: 1080px;
+        background: #ffffff;
+        padding: 0;
+        margin: 0;
+      }
+      .catalog-toolbar {
+        display: none !important;
+      }
+      .catalog-page {
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        page-break-after: always;
+        break-after: page;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE CONTROLE -->
+  <header class="catalog-toolbar">
+    <div class="toolbar-title">
+      Assifarma Catálogo 2026
+      <span class="tag">Design System 1920x1080</span>
+    </div>
+    <div class="toolbar-info">
+      Packshot Hero 440px | Topo 50% Foto | Base 50% Branca | Colunas Desacopladas Sem Mistura
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       PÁGINA A: PADRÃO NORMAL (COL 1: TABELA ESQUERDA | COL 2: PRODUTO CENTRO | COL 3: DIREITA)
+       ========================================================================= -->
+  <article class="catalog-page page-a" id="pagina-1">
+    
+    <!-- 1. TOPO 50% (540px) -->
+    <div class="zone-top-50">
+      <img src="amostras_design/img_p1_xref238_384x292.jpeg" alt="Runner background" class="top-bg-photo" />
+      <div class="top-bg-gradient"></div>
+
+      <!-- ABA DA LINHA NO TOPO ESQUERDO -->
+      <div class="brand-tab">
+        <svg class="brand-tab-svg" viewBox="0 0 340 52" preserveAspectRatio="none">
+          <polygon points="0,0 340,0 306,52 0,52" fill="#175da9" />
+        </svg>
+        <span class="brand-tab-label">Vitnutry</span>
+      </div>
+    </div>
+
+    <!-- 2. BASE 50% (540px) BRANCO PURO -->
+    <div class="zone-bottom-50"></div>
+
+    <!-- 3. FAIXA DIVISÓRIA VETORIAL COM PARALELOGRAMOS ESPORTIVOS -->
+    <svg class="divider-stripe" viewBox="0 0 1920 28" preserveAspectRatio="none">
+      <polygon points="0,0 1260,0 1245,28 0,28" fill="#175da9" />
+      <polygon points="1275,0 1325,0 1310,28 1260,28" fill="#175da9" />
+      <polygon points="1340,0 1390,0 1375,28 1325,28" fill="#175da9" />
+      <polygon points="1405,0 1455,0 1440,28 1390,28" fill="#175da9" />
+      <polygon points="1470,0 1520,0 1505,28 1455,28" fill="#175da9" />
+      <polygon points="1535,0 1920,0 1920,28 1505,28" fill="#175da9" />
+    </svg>
+
+    <!-- DIVISOR VERTICAL COM PONTOS -->
+    <div class="vertical-timeline">
+      <div class="timeline-circle"></div>
+      <div class="timeline-stem"></div>
+      <div class="timeline-circle"></div>
+    </div>
+
+    <!-- =======================================================================
+         COLUNA 1: TABELA NUTRICIONAL (AUTÔNOMA, CONTRASTADA, PADRÃO ANVISA)
+         ======================================================================= -->
+    <section class="nutrition-table-container">
+      <div class="nutrition-card-box">
+        <h3 class="nutrition-card-title">INFORMAÇÃO NUTRICIONAL</h3>
+        <p class="nutrition-card-meta">
+          Porções por Embalagem: 30 porções<br />
+          Porção: 1 g (2 cápsulas)
+        </p>
+
+        <table class="nutrition-grid-table">
+          <thead>
+            <tr>
+              <th>Nutriente</th>
+              <th class="col-right">1 g</th>
+              <th class="col-right">%VD*</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Valor Energético (kcal)</td><td class="col-right">5</td><td class="col-right">0%</td></tr>
+            <tr><td>Gorduras Totais (g)</td><td class="col-right">0,5</td><td class="col-right">1%</td></tr>
+            <tr><td>Ácido Fólico (mcg DFE)</td><td class="col-right">400</td><td class="col-right">100%</td></tr>
+            <tr><td>Ácido Pantotênico (mg)</td><td class="col-right">5</td><td class="col-right">100%</td></tr>
+            <tr><td>Biotina (mcg)</td><td class="col-right">30</td><td class="col-right">100%</td></tr>
+            <tr><td>Cobre (mcg)</td><td class="col-right">450</td><td class="col-right">50%</td></tr>
+            <tr><td>Cromo (mcg)</td><td class="col-right">18</td><td class="col-right">51%</td></tr>
+            <tr><td>Ferro (mg)</td><td class="col-right">8,1</td><td class="col-right">58%</td></tr>
+            <tr><td>Iodo (mcg)</td><td class="col-right">33</td><td class="col-right">22%</td></tr>
+            <tr><td>Magnésio (mg)</td><td class="col-right">130</td><td class="col-right">31%</td></tr>
+            <tr><td>Manganês (mg)</td><td class="col-right">1,1</td><td class="col-right">37%</td></tr>
+            <tr><td>Molibdênio (mcg)</td><td class="col-right">23</td><td class="col-right">51%</td></tr>
+            <tr><td>Niacina (mg NE)</td><td class="col-right">16</td><td class="col-right">107%</td></tr>
+            <tr><td>Riboflavina (mg)</td><td class="col-right">1,3</td><td class="col-right">108%</td></tr>
+            <tr><td>Selênio (mcg)</td><td class="col-right">20</td><td class="col-right">33%</td></tr>
+            <tr><td>Tiamina (mg)</td><td class="col-right">1,2</td><td class="col-right">100%</td></tr>
+            <tr><td>Vitamina A (mcg RAE)</td><td class="col-right">600</td><td class="col-right">75%</td></tr>
+            <tr><td>Vitamina B12 (mcg)</td><td class="col-right">2,4</td><td class="col-right">100%</td></tr>
+            <tr><td>Vitamina B6 (mg)</td><td class="col-right">1,3</td><td class="col-right">100%</td></tr>
+            <tr><td>Vitamina C (mg)</td><td class="col-right">45</td><td class="col-right">45%</td></tr>
+            <tr><td>Vitamina D (mcg)</td><td class="col-right">5</td><td class="col-right">33%</td></tr>
+            <tr><td>Vitamina E (mg)</td><td class="col-right">10</td><td class="col-right">67%</td></tr>
+            <tr><td>Vitamina K (mcg)</td><td class="col-right">65</td><td class="col-right">54%</td></tr>
+            <tr><td>Zinco (mg)</td><td class="col-right">7</td><td class="col-right">64%</td></tr>
+          </tbody>
+        </table>
+
+        <p class="nutrition-card-footer">
+          Não contém quantidades significativas de Carboidratos, Açúcares Totais, Açúcares Adicionados, Proteínas e Sódio.<br />
+          * Percentual de valores diários fornecidos pela porção.
+        </p>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         COLUNA 2: PRODUTO HERO (IMAGEM GIGANTE NO TOPO + NOME & BENEFÍCIOS NA BASE)
+         ======================================================================= -->
+    <section class="product-center-column">
+      
+      <!-- PACKSHOT HERO AMPLIADO (440px DE ALTURA, CRUZA A DIVISÓRIA) -->
+      <div class="packshot-top-hero">
+        <img src="amostras_design/hi_packshot_az_transparent.png" alt="Vitnutry AZ" />
+      </div>
+
+      <!-- BLOCO DE TEXTOS E BENEFÍCIOS (BASE BRANCA, TOTALMENTE NÍTIDO) -->
+      <div class="product-bottom-info">
+        <div class="product-header-block">
+          <span class="product-sub-category">Polivitamínico</span>
+          <div class="product-hero-name-row">
+            <h1 class="product-hero-title">AZ</h1>
+            <span class="product-pack-badge">60 Cápsulas softgel</span>
+          </div>
+        </div>
+
+        <!-- 3 BENEFÍCIOS IN 28 (COM ÍCONES E NEGRITO REGULATÓRIO) -->
+        <div class="benefits-structured-list">
+          <div class="benefit-item-row">
+            <svg class="benefit-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <p class="benefit-paragraph">
+              As vitaminas B6, B12, a tiamina, riboflavina, niacina, ácido pantotênico, o cobre, o ferro e o manganês <b>auxiliam no metabolismo energético;</b>
+            </p>
+          </div>
+
+          <div class="benefit-item-row">
+            <svg class="benefit-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <p class="benefit-paragraph">
+              As vitaminas A, B6, B12, C e D, o Ácido Fólico, o cobre, o ferro, o zinco e o selênio <b>auxiliam no funcionamento do sistema imune;</b>
+            </p>
+          </div>
+
+          <div class="benefit-item-row">
+            <svg class="benefit-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="6"></circle>
+              <circle cx="12" cy="12" r="2"></circle>
+            </svg>
+            <p class="benefit-paragraph">
+              As vitaminas C e E, a riboflavina, o cobre, o manganês, o zinco e o selênio <b>são antioxidantes que auxiliam na proteção dos danos causados pelos radicais livres.</b>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =======================================================================
+         COLUNA 3: FRASE DE EFEITO, DESTAQUES E BADGES
+         ======================================================================= -->
+    <section class="creative-column">
+      <div class="creative-header-block">
+        <span class="creative-disclaimer">Imagens ilustrativas</span>
+        <p class="creative-intro">Completo com</p>
+        <div class="creative-number-container">
+          <span class="creative-huge-num">22</span>
+          <span class="creative-sub-text">vitaminas<br />e minerais.</span>
+        </div>
+      </div>
+
+      <div class="badges-pill-column">
+        <div class="badge-pill-item">Zero Açúcar</div>
+        <div class="badge-pill-item">Não contém Glúten</div>
+        <div class="badge-pill-item">Não contém Carboidratos</div>
+        <div class="badge-pill-item">Não contém Sódio</div>
+      </div>
+    </section>
+
+  </article>
+
+
+  <!-- =========================================================================
+       PÁGINA B: PADRÃO INVERTIDO (COL 3 ESQUERDA | COL 2 CENTRO | COL 1 DIREITA)
+       ========================================================================= -->
+  <article class="catalog-page page-b" id="pagina-2">
+    
+    <!-- 1. TOPO 50% (540px) -->
+    <div class="zone-top-50">
+      <img src="amostras_design/img_p1_xref242_568x295.jpeg" alt="Senior background" class="top-bg-photo" />
+      <div class="top-bg-gradient"></div>
+
+      <!-- ABA DA LINHA NO TOPO DIREITO -->
+      <div class="brand-tab">
+        <svg class="brand-tab-svg" viewBox="0 0 340 52" preserveAspectRatio="none">
+          <polygon points="340,0 0,0 34,52 340,52" fill="#175da9" />
+        </svg>
+        <span class="brand-tab-label">Vitnutry</span>
+      </div>
+    </div>
+
+    <!-- 2. BASE 50% (540px) BRANCO PURO -->
+    <div class="zone-bottom-50"></div>
+
+    <!-- 3. FAIXA DIVISÓRIA VETORIAL (ESPELHADA) -->
+    <svg class="divider-stripe" viewBox="0 0 1920 28" preserveAspectRatio="none">
+      <polygon points="0,0 385,0 400,28 0,28" fill="#175da9" />
+      <polygon points="415,0 465,0 480,28 430,28" fill="#175da9" />
+      <polygon points="480,0 530,0 545,28 495,28" fill="#175da9" />
+      <polygon points="545,0 595,0 610,28 560,28" fill="#175da9" />
+      <polygon points="610,0 660,0 675,28 625,28" fill="#175da9" />
+      <polygon points="675,0 1920,0 1920,28 660,28" fill="#175da9" />
+    </svg>
+
+    <!-- DIVISOR VERTICAL COM PONTOS -->
+    <div class="vertical-timeline">
+      <div class="timeline-circle"></div>
+      <div class="timeline-stem"></div>
+      <div class="timeline-circle"></div>
+    </div>
+
+    <!-- =======================================================================
+         COLUNA 3 (INVERTIDA PARA ESQUERDA): FRASE DE EFEITO E BADGES
+         ======================================================================= -->
+    <section class="creative-column">
+      <div class="creative-header-block">
+        <span class="creative-disclaimer">Imagens ilustrativas</span>
+        <p class="creative-intro">Saúde e energia para</p>
+        <div class="creative-number-container">
+          <span class="creative-sub-text">aproveitar o melhor<br />da vida após os 50.</span>
+        </div>
+      </div>
+
+      <div class="badges-pill-column">
+        <div class="badge-pill-item">Zero Açúcar</div>
+        <div class="badge-pill-item">Não contém Glúten</div>
+        <div class="badge-pill-item">Não contém Carboidratos</div>
+        <div class="badge-pill-item">Não contém Sódio</div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         COLUNA 2: PRODUTO HERO (PACKSHOT GIGANTE NO TOPO + NOME & BENEFÍCIOS NA BASE)
+         ======================================================================= -->
+    <section class="product-center-column">
+      
+      <!-- PACKSHOT HERO AMPLIADO -->
+      <div class="packshot-top-hero">
+        <img src="amostras_design/hi_packshot_senior_transparent.png" alt="Vitnutry AZ Sênior" />
+      </div>
+
+      <!-- BLOCO DE TEXTOS E BENEFÍCIOS -->
+      <div class="product-bottom-info">
+        <div class="product-header-block">
+          <span class="product-sub-category">Polivitamínico</span>
+          <div class="product-hero-name-row">
+            <h1 class="product-hero-title">AZ Sênior</h1>
+            <span class="product-pack-badge">60 Cápsulas softgel</span>
+          </div>
+        </div>
+
+        <!-- 3 BENEFÍCIOS IN 28 -->
+        <div class="benefits-structured-list">
+          <div class="benefit-item-row">
+            <svg class="benefit-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <p class="benefit-paragraph">
+              As vitaminas B6, B12, a tiamina, riboflavina, niacina, ácido pantotênico, o cobre, o ferro e o manganês <b>auxiliam no metabolismo energético;</b>
+            </p>
+          </div>
+
+          <div class="benefit-item-row">
+            <svg class="benefit-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <p class="benefit-paragraph">
+              As vitaminas A, B6, B12, C e D, o Ácido Fólico, o cobre, o ferro, o zinco e o selênio <b>auxiliam no funcionamento do sistema imune;</b>
+            </p>
+          </div>
+
+          <div class="benefit-item-row">
+            <svg class="benefit-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="6"></circle>
+              <circle cx="12" cy="12" r="2"></circle>
+            </svg>
+            <p class="benefit-paragraph">
+              As vitaminas C e E, a riboflavina, o cobre, o manganês, o zinco e o selênio <b>são antioxidantes que auxiliam na proteção dos danos causados pelos radicais livres.</b>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =======================================================================
+         COLUNA 1 (INVERTIDA PARA DIREITA): TABELA NUTRICIONAL
+         ======================================================================= -->
+    <section class="nutrition-table-container">
+      <div class="nutrition-card-box">
+        <h3 class="nutrition-card-title">INFORMAÇÃO NUTRICIONAL</h3>
+        <p class="nutrition-card-meta">
+          Porções por Embalagem: 30 porções<br />
+          Porção: 1 g (2 cápsulas)
+        </p>
+
+        <table class="nutrition-grid-table">
+          <thead>
+            <tr>
+              <th>Nutriente</th>
+              <th class="col-right">1 g</th>
+              <th class="col-right">%VD*</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Valor Energético (kcal)</td><td class="col-right">5</td><td class="col-right">0%</td></tr>
+            <tr><td>Gorduras Totais (g)</td><td class="col-right">0,5</td><td class="col-right">1%</td></tr>
+            <tr><td>Ácido Fólico (mcg DFE)</td><td class="col-right">400</td><td class="col-right">100%</td></tr>
+            <tr><td>Ácido Pantotênico (mg)</td><td class="col-right">5</td><td class="col-right">100%</td></tr>
+            <tr><td>Biotina (mcg)</td><td class="col-right">30</td><td class="col-right">100%</td></tr>
+            <tr><td>Cobre (mcg)</td><td class="col-right">450</td><td class="col-right">50%</td></tr>
+            <tr><td>Cromo (mcg)</td><td class="col-right">18</td><td class="col-right">51%</td></tr>
+            <tr><td>Ferro (mg)</td><td class="col-right">8,1</td><td class="col-right">58%</td></tr>
+            <tr><td>Iodo (mcg)</td><td class="col-right">33</td><td class="col-right">22%</td></tr>
+            <tr><td>Magnésio (mg)</td><td class="col-right">130</td><td class="col-right">31%</td></tr>
+            <tr><td>Manganês (mg)</td><td class="col-right">1,1</td><td class="col-right">37%</td></tr>
+            <tr><td>Molibdênio (mcg)</td><td class="col-right">23</td><td class="col-right">51%</td></tr>
+            <tr><td>Niacina (mg NE)</td><td class="col-right">16</td><td class="col-right">107%</td></tr>
+            <tr><td>Riboflavina (mg)</td><td class="col-right">1,3</td><td class="col-right">108%</td></tr>
+            <tr><td>Selênio (mcg)</td><td class="col-right">20</td><td class="col-right">33%</td></tr>
+            <tr><td>Tiamina (mg)</td><td class="col-right">1,2</td><td class="col-right">100%</td></tr>
+            <tr><td>Vitamina A (mcg RAE)</td><td class="col-right">600</td><td class="col-right">75%</td></tr>
+            <tr><td>Vitamina B12 (mcg)</td><td class="col-right">2,4</td><td class="col-right">100%</td></tr>
+            <tr><td>Vitamina B6 (mg)</td><td class="col-right">1,3</td><td class="col-right">100%</td></tr>
+            <tr><td>Vitamina C (mg)</td><td class="col-right">45</td><td class="col-right">45%</td></tr>
+            <tr><td>Vitamina D (mcg)</td><td class="col-right">5</td><td class="col-right">33%</td></tr>
+            <tr><td>Vitamina E (mg)</td><td class="col-right">10</td><td class="col-right">67%</td></tr>
+            <tr><td>Vitamina K (mcg)</td><td class="col-right">65</td><td class="col-right">54%</td></tr>
+            <tr><td>Zinco (mg)</td><td class="col-right">7</td><td class="col-right">64%</td></tr>
+          </tbody>
+        </table>
+
+        <p class="nutrition-card-footer">
+          Não contém quantidades significativas de Carboidratos, Açúcares Totais, Açúcares Adicionados, Proteínas e Sódio.<br />
+          * Percentual de valores diários fornecidos pela porção.
+        </p>
+      </div>
+    </section>
+
+  </article>
+
+</body>
+</html>

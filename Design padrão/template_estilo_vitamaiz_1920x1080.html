@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assifarma — Catálogo Oficial 2026 | Padrão VitaMaiz Widescreen (1920x1080)</title>
+
+  <!-- Google Fonts: Bricolage Grotesque, Plus Jakarta Sans e Inter (Padrão Oficial VitaMaiz) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       1. TOKENS VISUAIS E CORES (PADRÃO OFICIAL VITAMAIZ)
+       ========================================================================== */
+    :root {
+      --ink-900: #0B132B;
+      --ink-700: #1E293B;
+      --ink-500: #475569;
+      --ink-300: #94A3B8;
+
+      --font-title: 'Bricolage Grotesque', sans-serif;
+      --font-ui: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-anvisa: Arial, Helvetica, sans-serif;
+
+      /* Espectro Cromático Assinatura */
+      --brand-spectrum: linear-gradient(
+        90deg,
+        #175da9 0%,
+        #0284c7 20%,
+        #059669 40%,
+        #eab308 60%,
+        #ea580c 80%,
+        #dc2626 100%
+      );
+
+      /* Dimensões Oficiais 1920x1080 Paisagem */
+      --page-w: 1920px;
+      --page-h: 1080px;
+    }
+
+    /* Temas Vibrantes por Categoria */
+    [data-theme="borg-az"] {
+      --theme-color: #175da9;
+      --theme-dark: #0f2c59;
+      --theme-light: #e0f2fe;
+      --header-grad: linear-gradient(135deg, #0a1b38 0%, #0f2c59 45%, #175da9 100%);
+      --stage-grad: radial-gradient(circle at 50% 50%, #ffffff 0%, #f1f5f9 65%, #e2e8f0 100%);
+      --glass-border: rgba(23, 93, 169, 0.22);
+      --box-grad: linear-gradient(135deg, rgba(23, 93, 169, 0.06) 0%, rgba(224, 242, 254, 0.5) 100%);
+    }
+
+    [data-theme="cronovit-senior"] {
+      --theme-color: #d97706;
+      --theme-dark: #78350f;
+      --theme-light: #fef3c7;
+      --header-grad: linear-gradient(135deg, #451a03 0%, #78350f 45%, #b45309 80%, #d97706 100%);
+      --stage-grad: radial-gradient(circle at 50% 50%, #ffffff 0%, #fffbeb 65%, #fef3c7 100%);
+      --glass-border: rgba(217, 119, 6, 0.22);
+      --box-grad: linear-gradient(135deg, rgba(217, 119, 6, 0.06) 0%, rgba(254, 243, 199, 0.5) 100%);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      background-color: #0b1120;
+      font-family: var(--font-body);
+      color: var(--ink-900);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* BARRA DE CONTROLE NA TELA */
+    .screen-toolbar {
+      width: var(--page-w);
+      max-width: 95vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #091426;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 16px 28px;
+      color: #fff;
+      font-family: var(--font-ui);
+    }
+
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .toolbar-badge {
+      background: #e11d48;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .toolbar-title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .toolbar-desc {
+      font-size: 13px;
+      color: #94a3b8;
+    }
+
+    /* ==========================================================================
+       PÁGINA DO CATÁLOGO: 1920x1080 WIDESCREEN (FUNDO 100% BRANCO)
+       ========================================================================== */
+    .catalog-page {
+      width: var(--page-w);
+      height: var(--page-h);
+      position: relative;
+      background: #ffffff !important;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      padding: 32px 50px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    /* ==========================================================================
+       TOPO: HEADER VIBRANTE COM DEGRADÊ + TÍTULO GIGANTE + ESPECTRO
+       ========================================================================== */
+    .hero-color-header {
+      background: var(--header-grad);
+      color: #ffffff;
+      border-radius: 18px;
+      padding: 18px 32px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.18);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .hero-color-header::before {
+      content: "";
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+      pointer-events: none;
+    }
+
+    .hero-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .title-group {
+      display: flex;
+      align-items: baseline;
+      gap: 18px;
+    }
+
+    .title-brand-large {
+      font-family: var(--font-title);
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      opacity: 0.92;
+    }
+
+    .title-product-huge {
+      font-family: var(--font-title);
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .header-badges-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .hero-category-glass {
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      padding: 8px 22px;
+      border-radius: 30px;
+      font-family: var(--font-ui);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero-code-tag {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.85);
+      background: rgba(0, 0, 0, 0.2);
+      padding: 8px 16px;
+      border-radius: 30px;
+    }
+
+    .md-denominacao-venda {
+      font-family: var(--font-ui);
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.88;
+      margin-top: 2px;
+    }
+
+    /* ESPECTRO DE CORES ASSINATURA */
+    .brand-spectrum-bar {
+      width: 100%;
+      height: 4px;
+      background: var(--brand-spectrum);
+      border-radius: 2px;
+      margin: 8px 0;
+    }
+
+    /* ==========================================================================
+       FAIXA DE DESTAQUES PRINCIPAIS DA FORMULAÇÃO (3 BOXES)
+       ========================================================================== */
+    .key-specs-highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .key-spec-box {
+      background: var(--box-grad);
+      border: 1.5px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 10px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .key-spec-label {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink-500);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .key-spec-value {
+      font-family: var(--font-ui);
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--ink-900);
+    }
+
+    /* ==========================================================================
+       GRID DE 3 COLUNAS EQUILIBRADAS NO FORMATO 1920x1080
+       ========================================================================== */
+    .widescreen-columns-grid {
+      display: grid;
+      gap: 24px;
+      flex: 1;
+      min-height: 0;
+      align-items: stretch;
+    }
+
+    /* Página A: Coluna 1 (Produto 520px) | Coluna 2 (Benefícios 720px) | Coluna 3 (Tabela 540px) */
+    .page-a .widescreen-columns-grid {
+      grid-template-columns: 500px 1fr 520px;
+    }
+
+    /* Página B: Coluna 3 (Tabela 520px) | Coluna 2 (Benefícios 720px) | Coluna 1 (Produto 500px) */
+    .page-b .widescreen-columns-grid {
+      grid-template-columns: 520px 1fr 500px;
+    }
+
+    /* ==========================================================================
+       COLUNA: PACKSHOT STAGE & DESTAQUES ABAIXO DA IMAGEM
+       ========================================================================== */
+    .col-product-packshot {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      height: 100%;
+    }
+
+    .glass-product-stage {
+      background: var(--stage-grad);
+      border: 1.5px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+    }
+
+    .glass-product-stage img.packshot {
+      max-height: 480px;
+      max-width: 440px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 30px rgba(15, 23, 42, 0.28));
+    }
+
+    .below-image-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .highlight-feature-box {
+      background: var(--header-grad);
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 10px 12px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .hl-main {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    /* ==========================================================================
+       COLUNA: INFORMAÇÕES E BENEFÍCIOS (IN 28) + INGREDIENTES + ADVERTÊNCIAS
+       ========================================================================== */
+    .col-benefits-ingredients {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      height: 100%;
+      overflow-y: auto;
+    }
+
+    .glass-info-card {
+      background: #ffffff;
+      border: 1.5px solid var(--glass-border);
+      border-radius: 14px;
+      padding: 16px 20px;
+      box-shadow: 0 4px 14px rgba(9, 20, 38, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .card-heading {
+      font-family: var(--font-ui);
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--theme-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-bottom: 2px solid var(--theme-color);
+      padding-bottom: 4px;
+      display: inline-block;
+      width: fit-content;
+    }
+
+    .md-benefits-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .md-benefits-list li {
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--ink-700);
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .md-benefits-list li::before {
+      content: "•";
+      position: absolute;
+      left: 6px;
+      top: -1px;
+      color: var(--theme-color);
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .md-benefits-list li strong {
+      color: var(--ink-900);
+      font-weight: 700;
+    }
+
+    .ingredients-copy {
+      font-size: 12px;
+      line-height: 1.45;
+      color: var(--ink-700);
+    }
+
+    .allergens-inline {
+      display: block;
+      margin-top: 6px;
+      font-weight: 800;
+      color: #991b1b; /* Vermelho Alerta Regulatório */
+      font-size: 11.5px;
+    }
+
+    .warnings-card {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 11px;
+      line-height: 1.35;
+      color: #92400e;
+    }
+
+    .warnings-card strong {
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       COLUNA: TABELA NUTRICIONAL OFICIAL ANVISA (DENSE & REGULATÓRIA)
+       ========================================================================== */
+    .col-anvisa-table {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .anvisa-box {
+      background: #ffffff;
+      border: 1.5pt solid #000000;
+      border-radius: 4px;
+      padding: 14px 18px;
+      font-family: var(--font-anvisa);
+      color: #000000;
+      font-size: 11px;
+      line-height: 1.25;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    .anvisa-title {
+      font-family: var(--font-anvisa);
+      font-weight: 800;
+      font-size: 14px;
+      text-align: center;
+      border-bottom: 2pt solid #000000;
+      padding-bottom: 4px;
+      margin-bottom: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    .anvisa-serving-block {
+      font-size: 11px;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .anvisa-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+    }
+
+    .anvisa-table th {
+      font-family: var(--font-anvisa);
+      font-weight: 700;
+      border-bottom: 1.5pt solid #000000;
+      padding: 3.5px 2px;
+      text-align: left;
+    }
+
+    .anvisa-table th.col-right,
+    .anvisa-table td.col-right {
+      text-align: right;
+    }
+
+    .anvisa-table td {
+      padding: 2.8px 2px;
+      border-bottom: 0.75pt solid #000000;
+    }
+
+    .anvisa-table tr:last-child td {
+      border-bottom: 1.5pt solid #000000;
+    }
+
+    .anvisa-footnote {
+      font-size: 9.5px;
+      color: #000000;
+      margin-top: 6px;
+      line-height: 1.25;
+    }
+
+    /* RODAPÉ INSTITUCIONAL */
+    .slide-page-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 10px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 11.5px;
+      color: var(--ink-500);
+      font-family: var(--font-ui);
+    }
+
+    /* ==========================================================================
+       IMPRESSÃO E EXPORTAÇÃO PDF 1920x1080
+       ========================================================================== */
+    @page {
+      size: 1920px 1080px;
+      margin: 0 !important;
+    }
+
+    @media print {
+      html, body {
+        width: 1920px !important;
+        height: 1080px !important;
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .screen-toolbar {
+        display: none !important;
+      }
+      .catalog-page {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        width: 1920px !important;
+        height: 1080px !important;
+        page-break-after: always !important;
+        break-after: page !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE CONTROLE NA TELA -->
+  <header class="screen-toolbar">
+    <div class="toolbar-left">
+      <span class="toolbar-badge">Padrão VitaMaiz</span>
+      <span class="toolbar-title">Catálogo Oficial Assifarma 2026</span>
+    </div>
+    <div class="toolbar-desc">
+      Formato Widescreen 1920x1080 | Fundo 100% Branco | Sem Imagens Ilustrativas | Packshot Hero em Stage Limpo
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       PÁGINA 1 (PÁGINA A): POLIVITAMÍNICO AZ (TEMA AZUL ROYAL / NAVY BORG)
+       Layout: [ Coluna 1: Produto + Destaques | Coluna 2: Benefícios + Ingredientes | Coluna 3: Tabela ANVISA ]
+       ========================================================================= -->
+  <article class="catalog-page page-a" data-theme="borg-az" id="pagina-1">
+    
+    <!-- TOPO VIBRANTE COM IDENTIDADE DA LINHA -->
+    <header class="hero-color-header">
+      <div class="hero-top-row">
+        <div class="title-group">
+          <span class="title-brand-large">BORG</span>
+          <h1 class="title-product-huge">Polivitamínico AZ</h1>
+        </div>
+        <div class="header-badges-right">
+          <span class="hero-category-glass">Vitaminas &amp; Minerais</span>
+          <span class="hero-code-tag">CÓD. 514141</span>
+        </div>
+      </div>
+      <p class="md-denominacao-venda">SUPLEMENTO ALIMENTAR DE VITAMINAS E MINERAIS EM CÁPSULAS</p>
+    </header>
+
+    <!-- ESPECTRO CROMÁTICO ASSINATURA -->
+    <div class="brand-spectrum-bar"></div>
+
+    <!-- FAIXA DE ESPECIFICAÇÕES PRINCIPAIS -->
+    <section class="key-specs-highlight-grid">
+      <div class="key-spec-box">
+        <span class="key-spec-label">Apresentação:</span>
+        <span class="key-spec-value">Contém 60 cápsulas Softgel</span>
+      </div>
+      <div class="key-spec-box">
+        <span class="key-spec-label">Recomendação de Uso:</span>
+        <span class="key-spec-value">02 cápsulas ao dia</span>
+      </div>
+      <div class="key-spec-box">
+        <span class="key-spec-label">Público-Alvo:</span>
+        <span class="key-spec-value">Adultos acima de 19 anos</span>
+      </div>
+      <div class="key-spec-box">
+        <span class="key-spec-label">Formulação:</span>
+        <span class="key-spec-value">Completo com 22 Nutrientes</span>
+      </div>
+    </section>
+
+    <!-- 3 COLUNAS ARQUITETÔNICAS EQUILIBRADAS -->
+    <main class="widescreen-columns-grid">
+
+      <!-- COLUNA 1: PACKSHOT HERO EM STAGE LIMPO + DESTAQUES ABAIXO DA IMAGEM -->
+      <section class="col-product-packshot">
+        <div class="glass-product-stage">
+          <img
+            class="packshot"
+            src="amostras_design/hi_packshot_az_transparent.png"
+            alt="Borg Polivitamínico AZ 60 Cápsulas Softgel"
+          />
+        </div>
+
+        <div class="below-image-highlights">
+          <div class="highlight-feature-box">
+            <span class="hl-main">Com Zinco &amp; Ferro</span>
+          </div>
+          <div class="highlight-feature-box">
+            <span class="hl-main">Zero Açúcar e Glúten</span>
+          </div>
+          <div class="highlight-feature-box">
+            <span class="hl-main">Cápsula Softgel</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- COLUNA 2: INFORMAÇÕES E BENEFÍCIOS (IN 28) + INGREDIENTES + ADVERTÊNCIAS -->
+      <section class="col-benefits-ingredients">
+        
+        <!-- CARD BENEFÍCIOS -->
+        <div class="glass-info-card">
+          <h3 class="card-heading">Informações e benefícios</h3>
+          <ul class="md-benefits-list">
+            <li><strong>Metabolismo Energético (IN 28):</strong> As vitaminas B6, B12, a tiamina, riboflavina, niacina, ácido pantotênico, o cobre, o ferro e o manganês auxiliam no metabolismo energético e de proteínas, carboidratos e gorduras.</li>
+            <li><strong>Sistema Imunológico (IN 28):</strong> As vitaminas A, B6, B12, C e D, o Ácido Fólico, o cobre, o ferro, o zinco e o selênio auxiliam no funcionamento do sistema imune.</li>
+            <li><strong>Ação Antioxidante (IN 28):</strong> As vitaminas C e E, a riboflavina, o cobre, o manganês, o zinco e o selênio são antioxidantes que auxiliam na proteção dos danos causados pelos radicais livres.</li>
+            <li><strong>Visão e Saúde das Mucosas (IN 28):</strong> A vitamina A auxilia na visão e na manutenção de mucosas. O zinco auxilia na manutenção dos ossos e no processo de divisão celular.</li>
+          </ul>
+        </div>
+
+        <!-- CARD INGREDIENTES -->
+        <div class="glass-info-card">
+          <h3 class="card-heading">Ingredientes</h3>
+          <p class="ingredients-copy">
+            Óleo de Girassol (Helianthus annuus L.), Óxido de Magnésio, Fumarato Ferroso, Ácido Ascórbico, Acetato de DL-Alfa Tocoferol, Nicotinamida, Óxido de Zinco, D-Pantotenato de Cálcio, Palmitato de Retinol, Sulfato de Manganês, Cianocobalamina, Nitrato de Tiamina, Cloridrato de Piridoxina, Riboflavina, D-Biotina, Sulfato Cúprico, Molibdato de Sódio, Ácido Fólico, Selenito de Sódio, Iodeto de Potássio, Colecalciferol (Vitamina D3), Picolinato de Cromo. Cápsula: Gelificante Gelatina, Umectante Glicerol e Corantes Dióxido de Titânio e Carmim.
+            <span class="allergens-inline">NÃO CONTÉM GLÚTEN. ZERO AÇÚCAR. NÃO CONTÉM SÓDIO.</span>
+          </p>
+        </div>
+
+        <!-- CARD ADVERTÊNCIAS -->
+        <div class="warnings-card">
+          <strong>Advertências:</strong> Este produto não é um medicamento. Não exceder a recomendação diária de consumo indicada na embalagem. Mantenha fora do alcance de crianças.
+        </div>
+      </section>
+
+      <!-- COLUNA 3: TABELA NUTRICIONAL OFICIAL ANVISA (RDC 429 / IN 75) -->
+      <section class="col-anvisa-table">
+        <div class="anvisa-box">
+          <div>
+            <div class="anvisa-title">INFORMAÇÃO NUTRICIONAL</div>
+            <div class="anvisa-serving-block">
+              Porções por Embalagem: 30 porções<br />
+              Porção: 1 g (2 cápsulas softgel)
+            </div>
+
+            <table class="anvisa-table">
+              <thead>
+                <tr>
+                  <th>Nutriente</th>
+                  <th class="col-right">1 g</th>
+                  <th class="col-right">%VD*</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Valor Energético (kcal)</td><td class="col-right">5</td><td class="col-right">0</td></tr>
+                <tr><td>Gorduras Totais (g)</td><td class="col-right">0,5</td><td class="col-right">1</td></tr>
+                <tr><td>Ácido Fólico (mcg DFE)</td><td class="col-right">400</td><td class="col-right">100</td></tr>
+                <tr><td>Ácido Pantotênico (mg)</td><td class="col-right">5</td><td class="col-right">100</td></tr>
+                <tr><td>Biotina (mcg)</td><td class="col-right">30</td><td class="col-right">100</td></tr>
+                <tr><td>Cobre (mcg)</td><td class="col-right">450</td><td class="col-right">50</td></tr>
+                <tr><td>Cromo (mcg)</td><td class="col-right">18</td><td class="col-right">51</td></tr>
+                <tr><td>Ferro (mg)</td><td class="col-right">8,1</td><td class="col-right">58</td></tr>
+                <tr><td>Iodo (mcg)</td><td class="col-right">33</td><td class="col-right">22</td></tr>
+                <tr><td>Magnésio (mg)</td><td class="col-right">130</td><td class="col-right">31</td></tr>
+                <tr><td>Manganês (mg)</td><td class="col-right">1,1</td><td class="col-right">37</td></tr>
+                <tr><td>Molibdênio (mcg)</td><td class="col-right">23</td><td class="col-right">51</td></tr>
+                <tr><td>Niacina (mg NE)</td><td class="col-right">16</td><td class="col-right">107</td></tr>
+                <tr><td>Riboflavina (mg)</td><td class="col-right">1,3</td><td class="col-right">108</td></tr>
+                <tr><td>Selênio (mcg)</td><td class="col-right">20</td><td class="col-right">33</td></tr>
+                <tr><td>Tiamina (mg)</td><td class="col-right">1,2</td><td class="col-right">100</td></tr>
+                <tr><td>Vitamina A (mcg RAE)</td><td class="col-right">600</td><td class="col-right">75</td></tr>
+                <tr><td>Vitamina B12 (mcg)</td><td class="col-right">2,4</td><td class="col-right">100</td></tr>
+                <tr><td>Vitamina B6 (mg)</td><td class="col-right">1,3</td><td class="col-right">100</td></tr>
+                <tr><td>Vitamina C (mg)</td><td class="col-right">45</td><td class="col-right">45</td></tr>
+                <tr><td>Vitamina D (mcg)</td><td class="col-right">5</td><td class="col-right">33</td></tr>
+                <tr><td>Vitamina E (mg)</td><td class="col-right">10</td><td class="col-right">67</td></tr>
+                <tr><td>Vitamina K (mcg)</td><td class="col-right">65</td><td class="col-right">54</td></tr>
+                <tr><td>Zinco (mg)</td><td class="col-right">7</td><td class="col-right">64</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="anvisa-footnote">
+            Não contém quantidades significativas de Carboidratos, Açúcares Totais, Açúcares Adicionados, Proteínas e Sódio.<br />
+            * Percentual de valores diários fornecidos pela porção.
+          </p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- RODAPÉ DA PÁGINA -->
+    <footer class="slide-page-footer">
+      <span>Assifarma Farmacêutica • Catálogo Institucional 2026</span>
+      <span>Página 01</span>
+    </footer>
+  </article>
+
+
+  <!-- =========================================================================
+       PÁGINA 2 (PÁGINA B): CRONOVIT AZ SÊNIOR (LAYOUT INVERTIDO PADRÃO VITAMAIZ)
+       Layout: [ Coluna 3: Tabela ANVISA | Coluna 2: Benefícios + Ingredientes | Coluna 1: Produto + Destaques ]
+       ========================================================================= -->
+  <article class="catalog-page page-b" data-theme="cronovit-senior" id="pagina-2">
+    
+    <!-- TOPO VIBRANTE COM IDENTIDADE DA LINHA -->
+    <header class="hero-color-header">
+      <div class="hero-top-row">
+        <div class="title-group">
+          <span class="title-brand-large">CRONOVIT</span>
+          <h1 class="title-product-huge">Sênior 50+</h1>
+        </div>
+        <div class="header-badges-right">
+          <span class="hero-category-glass">Longevidade &amp; Vitalidade</span>
+          <span class="hero-code-tag">CÓD. 001547</span>
+        </div>
+      </div>
+      <p class="md-denominacao-venda">SUPLEMENTO ALIMENTAR POLIVITAMÍNICO E POLIMINERAL EM COMPRIMIDOS</p>
+    </header>
+
+    <!-- ESPECTRO CROMÁTICO ASSINATURA -->
+    <div class="brand-spectrum-bar"></div>
+
+    <!-- FAIXA DE ESPECIFICAÇÕES PRINCIPAIS -->
+    <section class="key-specs-highlight-grid">
+      <div class="key-spec-box">
+        <span class="key-spec-label">Apresentação:</span>
+        <span class="key-spec-value">Contém 60 comprimidos</span>
+      </div>
+      <div class="key-spec-box">
+        <span class="key-spec-label">Recomendação de Uso:</span>
+        <span class="key-spec-value">01 comprimido ao dia</span>
+      </div>
+      <div class="key-spec-box">
+        <span class="key-spec-label">Público-Alvo:</span>
+        <span class="key-spec-value">Adultos acima de 50 anos</span>
+      </div>
+      <div class="key-spec-box">
+        <span class="key-spec-label">Formulação:</span>
+        <span class="key-spec-value">Fórmula Ativa Longevidade</span>
+      </div>
+    </section>
+
+    <!-- 3 COLUNAS INVERTIDAS: TABELA NA ESQUERDA | BENEFÍCIOS NO MEIO | PRODUTO NA DIREITA -->
+    <main class="widescreen-columns-grid">
+
+      <!-- COLUNA 1 INVERTIDA: TABELA NUTRICIONAL OFICIAL ANVISA -->
+      <section class="col-anvisa-table">
+        <div class="anvisa-box">
+          <div>
+            <div class="anvisa-title">INFORMAÇÃO NUTRICIONAL</div>
+            <div class="anvisa-serving-block">
+              Porções por Embalagem: 60 porções<br />
+              Porção: 1 g (1 comprimido)
+            </div>
+
+            <table class="anvisa-table">
+              <thead>
+                <tr>
+                  <th>Nutriente</th>
+                  <th class="col-right">1 g</th>
+                  <th class="col-right">%VD*</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Valor Energético (kcal)</td><td class="col-right">0</td><td class="col-right">0</td></tr>
+                <tr><td>Vitamina A (mcg RAE)</td><td class="col-right">600</td><td class="col-right">75</td></tr>
+                <tr><td>Vitamina B1 (Tiamina) (mg)</td><td class="col-right">1,2</td><td class="col-right">100</td></tr>
+                <tr><td>Vitamina B2 (Riboflavina) (mg)</td><td class="col-right">1,3</td><td class="col-right">108</td></tr>
+                <tr><td>Niacina (Vitamina B3) (mg)</td><td class="col-right">16</td><td class="col-right">107</td></tr>
+                <tr><td>Ácido Pantotênico (mg)</td><td class="col-right">5</td><td class="col-right">100</td></tr>
+                <tr><td>Vitamina B6 (mg)</td><td class="col-right">1,3</td><td class="col-right">100</td></tr>
+                <tr><td>Biotina (mcg)</td><td class="col-right">30</td><td class="col-right">100</td></tr>
+                <tr><td>Ácido Fólico (mcg)</td><td class="col-right">240</td><td class="col-right">60</td></tr>
+                <tr><td>Vitamina B12 (mcg)</td><td class="col-right">2,4</td><td class="col-right">100</td></tr>
+                <tr><td>Vitamina C (mg)</td><td class="col-right">45</td><td class="col-right">45</td></tr>
+                <tr><td>Vitamina D (mcg)</td><td class="col-right">5</td><td class="col-right">33</td></tr>
+                <tr><td>Vitamina E (mg)</td><td class="col-right">10</td><td class="col-right">67</td></tr>
+                <tr><td>Vitamina K (mcg)</td><td class="col-right">65</td><td class="col-right">54</td></tr>
+                <tr><td>Cálcio (mg)</td><td class="col-right">250</td><td class="col-right">25</td></tr>
+                <tr><td>Cobre (mcg)</td><td class="col-right">450</td><td class="col-right">50</td></tr>
+                <tr><td>Cromo (mcg)</td><td class="col-right">18</td><td class="col-right">51</td></tr>
+                <tr><td>Ferro (mg)</td><td class="col-right">10</td><td class="col-right">71</td></tr>
+                <tr><td>Magnésio (mg)</td><td class="col-right">100</td><td class="col-right">24</td></tr>
+                <tr><td>Manganês (mg)</td><td class="col-right">1,2</td><td class="col-right">40</td></tr>
+                <tr><td>Selênio (mcg)</td><td class="col-right">20</td><td class="col-right">33</td></tr>
+                <tr><td>Zinco (mg)</td><td class="col-right">7</td><td class="col-right">64</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="anvisa-footnote">
+            Não contém quantidades significativas de Carboidratos, Proteínas e Sódio.<br />
+            * Percentual de valores diários fornecidos pela porção.
+          </p>
+        </div>
+      </section>
+
+      <!-- COLUNA 2: INFORMAÇÕES E BENEFÍCIOS (IN 28) + INGREDIENTES + ADVERTÊNCIAS -->
+      <section class="col-benefits-ingredients">
+        
+        <!-- CARD BENEFÍCIOS -->
+        <div class="glass-info-card">
+          <h3 class="card-heading">Informações e benefícios</h3>
+          <ul class="md-benefits-list">
+            <li><strong>Vitalidade e Energia 50+ (IN 28):</strong> As vitaminas B1, B2, B3, B5, B6, B12, o ferro e o cobre auxiliam no metabolismo energético para a rotina diária da melhor idade.</li>
+            <li><strong>Imunidade Reforçada (IN 28):</strong> As vitaminas A, C, D, o ferro, zinco e selênio auxiliam no funcionamento do sistema imune e na resposta celular protetora.</li>
+            <li><strong>Ossos e Músculos Fortalecidos (IN 28):</strong> O cálcio e a vitamina D auxiliam na manutenção de ossos e dentes e no funcionamento muscular saudável.</li>
+            <li><strong>Proteção Celular Antioxidante (IN 28):</strong> As vitaminas C, E, o zinco e o manganês são antioxidantes que auxiliam na proteção dos danos causados pelos radicais livres.</li>
+          </ul>
+        </div>
+
+        <!-- CARD INGREDIENTES -->
+        <div class="glass-info-card">
+          <h3 class="card-heading">Ingredientes</h3>
+          <p class="ingredients-copy">
+            Carbonato de Cálcio, Óxido de Magnésio, Ácido Ascórbico, Fumarato Ferroso, Acetato de DL-Alfa Tocoferol, Nicotinamida, Óxido de Zinco, D-Pantotenato de Cálcio, Sulfato de Manganês, Palmitato de Retinol, Fitomenadiona, Cianocobalamina, Colecalciferol, Cloridrato de Piridoxina, Nitrato de Tiamina, Riboflavina, Sulfato Cúprico, Picolinato de Cromo, Ácido Fólico, Selenito de Sódio, D-Biotina. Antiaglomerantes Celulose Microcristalina e Dióxido de Silício, Estabilizante Croscarmelose Sódica.
+            <span class="allergens-inline">NÃO CONTÉM GLÚTEN. ZERO AÇÚCARES. NÃO CONTÉM LACTOSE.</span>
+          </p>
+        </div>
+
+        <!-- CARD ADVERTÊNCIAS -->
+        <div class="warnings-card">
+          <strong>Advertências:</strong> Este produto não é um medicamento. Não exceder a recomendação diária de consumo indicada na embalagem. Mantenha fora do alcance de crianças.
+        </div>
+      </section>
+
+      <!-- COLUNA 3 INVERTIDA: PACKSHOT HERO EM STAGE LIMPO + DESTAQUES -->
+      <section class="col-product-packshot">
+        <div class="glass-product-stage">
+          <img
+            class="packshot"
+            src="amostras_design/hi_packshot_senior_transparent.png"
+            alt="Cronovit Sênior 50+ 60 Comprimidos"
+          />
+        </div>
+
+        <div class="below-image-highlights">
+          <div class="highlight-feature-box">
+            <span class="hl-main">Cálcio &amp; Vitamina D</span>
+          </div>
+          <div class="highlight-feature-box">
+            <span class="hl-main">Zero Açúcar e Glúten</span>
+          </div>
+          <div class="highlight-feature-box">
+            <span class="hl-main">Fórmula 50+ Ativa</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- RODAPÉ DA PÁGINA -->
+    <footer class="slide-page-footer">
+      <span>Assifarma Farmacêutica • Catálogo Institucional 2026</span>
+      <span>Página 02</span>
+    </footer>
+  </article>
+
+</body>
+</html>

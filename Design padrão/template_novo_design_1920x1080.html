@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assifarma — Nova Proposta de Design Editorial 2026 (1920x1080)</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans e Sora -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --page-w: 1920px;
+      --page-h: 1080px;
+
+      /* Paleta Luxo Farmacêutico / Editorial */
+      --color-primary: #0f2c59;      /* Azul Noturno Profundo */
+      --color-accent: #175da9;       /* Azul Royal Vivo */
+      --color-accent-light: #e8f2fe; /* Azul Glacial Suave */
+      --color-gold: #c59b27;         /* Dourado Nobre */
+      --color-gold-light: #fef9ec;   /* Dourado Fundo */
+      --color-slate-900: #0f172a;
+      --color-slate-700: #334155;
+      --color-slate-500: #64748b;
+      --color-slate-400: #94a3b8;
+      --color-slate-100: #f1f5f9;
+      --color-slate-50: #f8fafc;
+      --color-white: #ffffff;
+
+      /* Sombras e Efeitos */
+      --shadow-premium: 0 24px 48px -12px rgba(15, 23, 42, 0.08), 0 4px 16px rgba(15, 23, 42, 0.04);
+      --shadow-packshot: 0 36px 64px -14px rgba(15, 44, 89, 0.38), 0 12px 24px -6px rgba(15, 44, 89, 0.2);
+      --shadow-card: 0 16px 32px -8px rgba(15, 23, 42, 0.06);
+
+      --font-display: 'Sora', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-table: 'Arial', 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0b1120;
+      font-family: var(--font-body);
+      color: var(--color-slate-900);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* BARRA DE APRESENTAÇÃO */
+    .proposal-toolbar {
+      width: var(--page-w);
+      max-width: 95vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(30, 41, 59, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 18px 32px;
+      color: #fff;
+    }
+
+    .proposal-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .proposal-badge {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .proposal-desc {
+      font-size: 14px;
+      color: #cbd5e1;
+    }
+
+    /* PÁGINA MASTER 1920x1080 (16:9 Widescreen) */
+    .slide-page {
+      width: var(--page-w);
+      height: var(--page-h);
+      position: relative;
+      background: #fafcff;
+      overflow: hidden;
+      border-radius: 28px;
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.45);
+      page-break-after: always;
+      break-after: page;
+    }
+
+    /* AMBIÊNCIA DE FUNDO (LUXO SUAVE DE ESTÚDIO) */
+    .studio-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: 
+        radial-gradient(circle at 50% 35%, rgba(224, 238, 255, 0.7) 0%, rgba(248, 250, 252, 0) 55%),
+        radial-gradient(circle at 85% 15%, rgba(241, 245, 249, 0.9) 0%, rgba(248, 250, 252, 0) 45%),
+        linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    }
+
+    /* DECORAÇÃO DE ALFAIATARIA EDITORIAL */
+    .editorial-watermark {
+      position: absolute;
+      top: 40px;
+      right: 70px;
+      font-family: var(--font-display);
+      font-size: 120px;
+      font-weight: 800;
+      color: rgba(15, 44, 89, 0.025);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* CABEÇALHO GLOBAL DA PÁGINA (BRANDING) */
+    .slide-header {
+      position: absolute;
+      top: 44px;
+      left: 70px;
+      right: 70px;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+    }
+
+    .brand-cluster {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-pill {
+      background: var(--color-primary);
+      color: var(--color-white);
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 8px;
+    }
+
+    .line-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .header-meta {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-slate-500);
+      letter-spacing: 0.02em;
+    }
+
+    .header-meta span.dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--color-slate-400);
+    }
+
+    /* ==========================================================================
+       GRID DE 3 COLUNAS ARQUITETÔNICAS (1920x1080)
+       ========================================================================== */
+    .columns-grid {
+      position: absolute;
+      top: 110px;
+      bottom: 44px;
+      left: 70px;
+      right: 70px;
+      z-index: 5;
+      display: grid;
+      gap: 48px;
+      align-items: stretch;
+    }
+
+    /* Página A: Coluna 1 (Tabela 410px) | Coluna 2 (Produto 750px) | Coluna 3 (Conceito 530px) */
+    .page-layout-a .columns-grid {
+      grid-template-columns: 410px 1fr 510px;
+    }
+
+    /* Página B: Coluna 3 (Conceito 510px) | Coluna 2 (Produto 750px) | Coluna 1 (Tabela 410px) */
+    .page-layout-b .columns-grid {
+      grid-template-columns: 510px 1fr 410px;
+    }
+
+    /* ==========================================================================
+       COLUNA 1: TABELA NUTRICIONAL COMO "TECHNICAL CLINICAL CARD"
+       ========================================================================== */
+    .col-table-spec {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .spec-card {
+      background: var(--color-white);
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 22px 24px;
+      box-shadow: var(--shadow-card);
+      font-family: var(--font-table);
+      position: relative;
+    }
+
+    .spec-card-badge {
+      position: absolute;
+      top: -12px;
+      left: 24px;
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .spec-card-header {
+      border-bottom: 2px solid var(--color-slate-900);
+      padding-bottom: 6px;
+      margin-top: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .spec-title {
+      font-size: 14.5px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--color-slate-900);
+      text-transform: uppercase;
+    }
+
+    .spec-reg-code {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--color-slate-500);
+      letter-spacing: 0.05em;
+    }
+
+    .spec-portion-info {
+      font-size: 11px;
+      color: var(--color-slate-700);
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .spec-table-grid {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+    }
+
+    .spec-table-grid th {
+      font-weight: 700;
+      color: var(--color-slate-900);
+      border-bottom: 1.5px solid var(--color-slate-900);
+      padding: 3.5px 2px;
+      text-align: left;
+    }
+
+    .spec-table-grid th.num-col,
+    .spec-table-grid td.num-col {
+      text-align: right;
+    }
+
+    .spec-table-grid td {
+      padding: 2.8px 2px;
+      border-bottom: 1px solid #f1f5f9;
+      color: #1e293b;
+    }
+
+    .spec-table-grid tr:nth-child(even) td {
+      background-color: #fafcff;
+    }
+
+    .spec-table-grid tr:last-child td {
+      border-bottom: 1.5px solid var(--color-slate-900);
+    }
+
+    .spec-footnote {
+      font-size: 9px;
+      color: var(--color-slate-500);
+      margin-top: 6px;
+      line-height: 1.25;
+    }
+
+    /* ==========================================================================
+       COLUNA 2: HERO EXPERIENCE (PACKSHOT GIGANTE COM PEDESTAL + BENEFÍCIOS)
+       ========================================================================== */
+    .col-hero-product {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      position: relative;
+    }
+
+    /* PACKSHOT COM PEDESTAL DE LUZ E SOMBRA DE ESTÚDIO */
+    .packshot-stage {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stage-halo {
+      position: absolute;
+      width: 440px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(23, 93, 169, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .stage-pedestal-shadow {
+      position: absolute;
+      bottom: 24px;
+      width: 380px;
+      height: 28px;
+      background: radial-gradient(ellipse at center, rgba(15, 31, 56, 0.35) 0%, rgba(15, 31, 56, 0) 70%);
+      filter: blur(8px);
+      z-index: 1;
+    }
+
+    .packshot-hero-image {
+      position: relative;
+      z-index: 2;
+      height: 450px;
+      max-height: 450px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 30px rgba(15, 44, 89, 0.25));
+    }
+
+    /* BLOCO DE NOME DO PRODUTO & CARDS DE BENEFÍCIOS */
+    .product-info-stage {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 4px;
+    }
+
+    .product-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 12px;
+    }
+
+    .title-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .category-kicker {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+
+    .hero-title-main {
+      font-family: var(--font-display);
+      font-size: 46px;
+      font-weight: 800;
+      color: var(--color-primary);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .presentation-capsule {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-primary);
+      background: var(--color-accent-light);
+      padding: 6px 16px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    /* GRID DOS BENEFÍCIOS IN 28 (CARDS MODERNOS DE ALTA LEGIBILIDADE) */
+    .benefits-cards-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .benefit-luxury-card {
+      background: var(--color-white);
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.02);
+      transition: all 0.2s ease;
+    }
+
+    .benefit-icon-box {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #e0f2fe, #dbeafe);
+      color: var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .benefit-icon-box svg {
+      width: 20px;
+      height: 20px;
+      stroke-width: 2.2;
+    }
+
+    .benefit-description {
+      font-size: 13.5px;
+      line-height: 1.45;
+      color: var(--color-slate-700);
+    }
+
+    .benefit-description b {
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       COLUNA 3: PORTAL EDITORIAL & SELOS DE FORMULAÇÃO
+       ========================================================================== */
+    .col-concept-editorial {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* PORTAL FOTOGRÁFICO DE LIFESTYLE COM BORDAS ARQUITETÔNICAS */
+    .lifestyle-portal {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-premium);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .lifestyle-portal img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(1.05) contrast(1.02);
+    }
+
+    .lifestyle-portal-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15, 44, 89, 0) 35%, rgba(15, 44, 89, 0.8) 100%);
+    }
+
+    /* FRASE DE IMPACTO DENTRO DO PORTAL */
+    .punchline-floating {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      color: #fff;
+      z-index: 5;
+    }
+
+    .punchline-kicker {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #93c5fd;
+      margin-bottom: 4px;
+    }
+
+    .punchline-main-text {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .punchline-main-text span.gold-highlight {
+      color: #fbbf24;
+      font-size: 42px;
+      line-height: 0.9;
+      display: inline-block;
+      margin-right: 4px;
+    }
+
+    /* SEÇÃO INFERIOR: SELOS DE FORMULAÇÃO & PUREZA (BADGES) */
+    .purity-badges-module {
+      background: var(--color-white);
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 20px 22px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .purity-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 8px;
+    }
+
+    .purity-heading {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-slate-500);
+    }
+
+    .legal-disclaimer-tag {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--color-slate-400);
+      text-transform: uppercase;
+    }
+
+    /* BADGES EM DUAS COLUNAS SOFISTICADAS */
+    .badges-flex-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .badge-capsule {
+      background: var(--color-slate-50);
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .badge-capsule svg.badge-check {
+      width: 16px;
+      height: 16px;
+      color: #16a34a; /* Verde Sucesso Clínico */
+      flex-shrink: 0;
+    }
+
+    /* RODAPÉ DO SLIDE */
+    .slide-footer {
+      position: absolute;
+      bottom: 14px;
+      left: 70px;
+      right: 70px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--color-slate-400);
+      z-index: 10;
+    }
+
+    /* REGRAS DE IMPRESSÃO / PDF */
+    @page {
+      size: 1920px 1080px;
+      margin: 0;
+    }
+
+    @media print {
+      html, body {
+        width: 1920px;
+        height: 1080px;
+        background: #ffffff;
+        padding: 0;
+        margin: 0;
+      }
+      .proposal-toolbar {
+        display: none !important;
+      }
+      .slide-page {
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        page-break-after: always;
+        break-after: page;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE CONTROLE -->
+  <header class="proposal-toolbar">
+    <div class="proposal-title">
+      Nova Proposta: Design Editorial & Clínico de Luxo
+      <span class="proposal-badge">Conceito 2026</span>
+    </div>
+    <div class="proposal-desc">
+      Packshot 450px com Iluminação de Estúdio | Portal Lifestyle Arquitetônico | Tabela Estilo Clinical Spec | Badges Duplos
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       PÁGINA A: POLIVITAMÍNICO AZ (PADRÃO NORMAL: COL 1 TABELA | COL 2 PRODUTO | COL 3 CONCEITO)
+       ========================================================================= -->
+  <article class="slide-page page-layout-a" id="proposta-pagina-1">
+    
+    <!-- AMBIÊNCIA DE ESTÚDIO -->
+    <div class="studio-bg"></div>
+    <div class="editorial-watermark">AZ</div>
+
+    <!-- CABEÇALHO SUPERIOR (BRANDING & LINHA) -->
+    <header class="slide-header">
+      <div class="brand-cluster">
+        <span class="brand-pill">Linha Oficial</span>
+        <h2 class="line-name">Vitnutry Advanced</h2>
+      </div>
+      <div class="header-meta">
+        <span>Linha Polivitamínicos</span>
+        <span class="dot"></span>
+        <span>Código: 514141</span>
+        <span class="dot"></span>
+        <span>Apresentação Oficial 2026</span>
+      </div>
+    </header>
+
+    <!-- GRID DAS 3 COLUNAS ARQUITETÔNICAS -->
+    <main class="columns-grid">
+
+      <!-- COLUNA 1: TABELA NUTRICIONAL (CLINICAL SPEC CARD) -->
+      <section class="col-table-spec">
+        <div class="spec-card">
+          <span class="spec-card-badge">ANVISA RDC 429</span>
+          <div class="spec-card-header">
+            <h3 class="spec-title">Informação Nutricional</h3>
+            <span class="spec-reg-code">IN 75/2020</span>
+          </div>
+
+          <p class="spec-portion-info">
+            Porções por Embalagem: 30 porções<br />
+            Porção: 1 g (2 cápsulas softgel)
+          </p>
+
+          <table class="spec-table-grid">
+            <thead>
+              <tr>
+                <th>Nutriente</th>
+                <th class="num-col">1 g</th>
+                <th class="num-col">%VD*</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Valor Energético (kcal)</td><td class="num-col">5</td><td class="num-col">0%</td></tr>
+              <tr><td>Gorduras Totais (g)</td><td class="num-col">0,5</td><td class="num-col">1%</td></tr>
+              <tr><td>Ácido Fólico (mcg DFE)</td><td class="num-col">400</td><td class="num-col">100%</td></tr>
+              <tr><td>Ácido Pantotênico (mg)</td><td class="num-col">5</td><td class="num-col">100%</td></tr>
+              <tr><td>Biotina (mcg)</td><td class="num-col">30</td><td class="num-col">100%</td></tr>
+              <tr><td>Cobre (mcg)</td><td class="num-col">450</td><td class="num-col">50%</td></tr>
+              <tr><td>Cromo (mcg)</td><td class="num-col">18</td><td class="num-col">51%</td></tr>
+              <tr><td>Ferro (mg)</td><td class="num-col">8,1</td><td class="num-col">58%</td></tr>
+              <tr><td>Iodo (mcg)</td><td class="num-col">33</td><td class="num-col">22%</td></tr>
+              <tr><td>Magnésio (mg)</td><td class="num-col">130</td><td class="num-col">31%</td></tr>
+              <tr><td>Manganês (mg)</td><td class="num-col">1,1</td><td class="num-col">37%</td></tr>
+              <tr><td>Molibdênio (mcg)</td><td class="num-col">23</td><td class="num-col">51%</td></tr>
+              <tr><td>Niacina (mg NE)</td><td class="num-col">16</td><td class="num-col">107%</td></tr>
+              <tr><td>Riboflavina (mg)</td><td class="num-col">1,3</td><td class="num-col">108%</td></tr>
+              <tr><td>Selênio (mcg)</td><td class="num-col">20</td><td class="num-col">33%</td></tr>
+              <tr><td>Tiamina (mg)</td><td class="num-col">1,2</td><td class="num-col">100%</td></tr>
+              <tr><td>Vitamina A (mcg RAE)</td><td class="num-col">600</td><td class="num-col">75%</td></tr>
+              <tr><td>Vitamina B12 (mcg)</td><td class="num-col">2,4</td><td class="num-col">100%</td></tr>
+              <tr><td>Vitamina B6 (mg)</td><td class="num-col">1,3</td><td class="num-col">100%</td></tr>
+              <tr><td>Vitamina C (mg)</td><td class="num-col">45</td><td class="num-col">45%</td></tr>
+              <tr><td>Vitamina D (mcg)</td><td class="num-col">5</td><td class="num-col">33%</td></tr>
+              <tr><td>Vitamina E (mg)</td><td class="num-col">10</td><td class="num-col">67%</td></tr>
+              <tr><td>Vitamina K (mcg)</td><td class="num-col">65</td><td class="num-col">54%</td></tr>
+              <tr><td>Zinco (mg)</td><td class="num-col">7</td><td class="num-col">64%</td></tr>
+            </tbody>
+          </table>
+
+          <p class="spec-footnote">
+            Não contém quantidades significativas de Carboidratos, Açúcares Totais, Açúcares Adicionados, Proteínas e Sódio.<br />
+            * Percentual de valores diários fornecidos pela porção.
+          </p>
+        </div>
+      </section>
+
+      <!-- COLUNA 2: HERO EXPERIENCE (PACKSHOT 450px NO PEDESTAL + BENEFÍCIOS) -->
+      <section class="col-hero-product">
+        
+        <!-- ESTÚDIO DO PACKSHOT COM HALO E SOMBRA -->
+        <div class="packshot-stage">
+          <div class="stage-halo"></div>
+          <img src="amostras_design/hi_packshot_az_transparent.png" alt="Vitnutry AZ" class="packshot-hero-image" />
+          <div class="stage-pedestal-shadow"></div>
+        </div>
+
+        <!-- TÍTULO HERO E CARDS DE BENEFÍCIOS IN 28 -->
+        <div class="product-info-stage">
+          <div class="product-title-row">
+            <div class="title-left">
+              <span class="category-kicker">Suplemento Alimentar Completo</span>
+              <h1 class="hero-title-main">Polivitamínico AZ</h1>
+            </div>
+            <div class="presentation-capsule">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              60 Cápsulas Softgel
+            </div>
+          </div>
+
+          <!-- BENEFÍCIOS IN 28 ESTRUTURADOS EM CARDS LUXO -->
+          <div class="benefits-cards-grid">
+            <div class="benefit-luxury-card">
+              <div class="benefit-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <p class="benefit-description">
+                As vitaminas B6, B12, a tiamina, riboflavina, niacina, ácido pantotênico, o cobre, o ferro e o manganês <b>auxiliam no metabolismo energético;</b>
+              </p>
+            </div>
+
+            <div class="benefit-luxury-card">
+              <div class="benefit-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <polyline points="9 12 11 14 15 10"></polyline>
+                </svg>
+              </div>
+              <p class="benefit-description">
+                As vitaminas A, B6, B12, C e D, o Ácido Fólico, o cobre, o ferro, o zinco e o selênio <b>auxiliam no funcionamento do sistema imune;</b>
+              </p>
+            </div>
+
+            <div class="benefit-luxury-card">
+              <div class="benefit-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z"></path>
+                </svg>
+              </div>
+              <p class="benefit-description">
+                As vitaminas C e E, a riboflavina, o cobre, o manganês, o zinco e o selênio <b>são antioxidantes que auxiliam na proteção dos danos causados pelos radicais livres.</b>
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- COLUNA 3: PORTAL EDITORIAL & SELOS DE PUREZA -->
+      <section class="col-concept-editorial">
+        
+        <!-- PORTAL DE LIFESTYLE INTEGRADO COM FRASE DE IMPACTO -->
+        <div class="lifestyle-portal">
+          <img src="amostras_design/img_p1_xref238_384x292.jpeg" alt="Atleta Lifestyle" />
+          <div class="lifestyle-portal-overlay"></div>
+          
+          <div class="punchline-floating">
+            <span class="punchline-kicker">Fórmula de Alta Absorção</span>
+            <div class="punchline-main-text">
+              Completo com<br />
+              <span class="gold-highlight">22</span> vitaminas & minerais.
+            </div>
+          </div>
+        </div>
+
+        <!-- MÓDULO DE SELOS DE FORMULAÇÃO & PUREZA -->
+        <div class="purity-badges-module">
+          <div class="purity-header">
+            <span class="purity-heading">Destaques da Formulação</span>
+            <span class="legal-disclaimer-tag">Imagens Ilustrativas</span>
+          </div>
+
+          <div class="badges-flex-grid">
+            <div class="badge-capsule">
+              <svg class="badge-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Zero Açúcar
+            </div>
+            <div class="badge-capsule">
+              <svg class="badge-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Não contém Glúten
+            </div>
+            <div class="badge-capsule">
+              <svg class="badge-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Zero Carboidratos
+            </div>
+            <div class="badge-capsule">
+              <svg class="badge-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Não contém Sódio
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- RODAPÉ SUTIL -->
+    <footer class="slide-footer">
+      <span>Assifarma Farmacêutica • Catálogo Institucional 2026</span>
+      <span>Página 01</span>
+    </footer>
+  </article>
+
+
+  <!-- =========================================================================
+       PÁGINA B: AZ SÊNIOR (LAYOUT INVERTIDO: COL 3 CONCEITO | COL 2 PRODUTO | COL 1 TABELA)
+       ========================================================================= -->
+  <article class="slide-page page-layout-b" id="proposta-pagina-2">
+    
+    <!-- AMBIÊNCIA DE ESTÚDIO -->
+    <div class="studio-bg"></div>
+    <div class="editorial-watermark" style="left: 70px; right: auto;">50+</div>
+
+    <!-- CABEÇALHO SUPERIOR -->
+    <header class="slide-header">
+      <div class="brand-cluster">
+        <span class="brand-pill" style="background: #c59b27;">Linha Sênior</span>
+        <h2 class="line-name">Vitnutry Longevidade</h2>
+      </div>
+      <div class="header-meta">
+        <span>Saúde Ativa 50+</span>
+        <span class="dot"></span>
+        <span>Código: 001547</span>
+        <span class="dot"></span>
+        <span>Apresentação Oficial 2026</span>
+      </div>
+    </header>
+
+    <!-- GRID DAS 3 COLUNAS INVERTIDAS -->
+    <main class="columns-grid">
+
+      <!-- COLUNA 3 (INVERTIDA PARA ESQUERDA): PORTAL EDITORIAL & SELOS -->
+      <section class="col-concept-editorial">
+        
+        <!-- PORTAL DE LIFESTYLE INTEGRADO -->
+        <div class="lifestyle-portal">
+          <img src="amostras_design/img_p1_xref242_568x295.jpeg" alt="Sênior Ativo" />
+          <div class="lifestyle-portal-overlay"></div>
+          
+          <div class="punchline-floating">
+            <span class="punchline-kicker">Longevidade & Bem-Estar</span>
+            <div class="punchline-main-text">
+              Saúde e energia para<br />
+              <span class="gold-highlight" style="font-size: 32px;">aproveitar o melhor</span><br />
+              da vida após os 50.
+            </div>
+          </div>
+        </div>
+
+        <!-- MÓDULO DE SELOS DE FORMULAÇÃO -->
+        <div class="purity-badges-module">
+          <div class="purity-header">
+            <span class="purity-heading">Destaques da Formulação</span>
+            <span class="legal-disclaimer-tag">Imagens Ilustrativas</span>
+          </div>
+
+          <div class="badges-flex-grid">
+            <div class="badge-capsule">
+              <svg class="badge-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Zero Açúcar
+            </div>
+            <div class="badge-capsule">
+              <svg class="badge-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Não contém Glúten
+            </div>
+            <div class="badge-capsule">
+              <svg class="badge-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Zero Carboidratos
+            </div>
+            <div class="badge-capsule">
+              <svg class="badge-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Não contém Sódio
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- COLUNA 2: HERO EXPERIENCE (CENTRO: PACKSHOT 450px + BENEFÍCIOS) -->
+      <section class="col-hero-product">
+        
+        <!-- ESTÚDIO DO PACKSHOT -->
+        <div class="packshot-stage">
+          <div class="stage-halo" style="background: radial-gradient(circle, rgba(197, 155, 39, 0.12) 0%, rgba(255, 255, 255, 0) 70%);"></div>
+          <img src="amostras_design/hi_packshot_senior_transparent.png" alt="Vitnutry AZ Sênior" class="packshot-hero-image" />
+          <div class="stage-pedestal-shadow"></div>
+        </div>
+
+        <!-- TÍTULO HERO E CARDS DE BENEFÍCIOS IN 28 -->
+        <div class="product-info-stage">
+          <div class="product-title-row">
+            <div class="title-left">
+              <span class="category-kicker" style="color: #c59b27;">Fórmula Especial 50+</span>
+              <h1 class="hero-title-main">Polivitamínico AZ Sênior</h1>
+            </div>
+            <div class="presentation-capsule" style="background: #fef9ec; color: #92400e;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              60 Cápsulas Softgel
+            </div>
+          </div>
+
+          <!-- BENEFÍCIOS IN 28 EM CARDS LUXO -->
+          <div class="benefits-cards-grid">
+            <div class="benefit-luxury-card">
+              <div class="benefit-icon-box" style="background: #fef3c7; color: #b45309;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <p class="benefit-description">
+                As vitaminas B6, B12, a tiamina, riboflavina, niacina, ácido pantotênico, o cobre, o ferro e o manganês <b>auxiliam no metabolismo energético;</b>
+              </p>
+            </div>
+
+            <div class="benefit-luxury-card">
+              <div class="benefit-icon-box" style="background: #fef3c7; color: #b45309;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <polyline points="9 12 11 14 15 10"></polyline>
+                </svg>
+              </div>
+              <p class="benefit-description">
+                As vitaminas A, B6, B12, C e D, o Ácido Fólico, o cobre, o ferro, o zinco e o selênio <b>auxiliam no funcionamento do sistema imune;</b>
+              </p>
+            </div>
+
+            <div class="benefit-luxury-card">
+              <div class="benefit-icon-box" style="background: #fef3c7; color: #b45309;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 6v6l4 2"></path>
+                </svg>
+              </div>
+              <p class="benefit-description">
+                As vitaminas C e E, a riboflavina, o cobre, o manganês, o zinco e o selênio <b>são antioxidantes que auxiliam na proteção dos danos causados pelos radicais livres.</b>
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- COLUNA 1 (INVERTIDA PARA DIREITA): TABELA NUTRICIONAL -->
+      <section class="col-table-spec">
+        <div class="spec-card">
+          <span class="spec-card-badge" style="background: #c59b27;">ANVISA RDC 429</span>
+          <div class="spec-card-header">
+            <h3 class="spec-title">Informação Nutricional</h3>
+            <span class="spec-reg-code">IN 75/2020</span>
+          </div>
+
+          <p class="spec-portion-info">
+            Porções por Embalagem: 30 porções<br />
+            Porção: 1 g (2 cápsulas softgel)
+          </p>
+
+          <table class="spec-table-grid">
+            <thead>
+              <tr>
+                <th>Nutriente</th>
+                <th class="num-col">1 g</th>
+                <th class="num-col">%VD*</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Valor Energético (kcal)</td><td class="num-col">5</td><td class="num-col">0%</td></tr>
+              <tr><td>Gorduras Totais (g)</td><td class="num-col">0,5</td><td class="num-col">1%</td></tr>
+              <tr><td>Ácido Fólico (mcg DFE)</td><td class="num-col">400</td><td class="num-col">100%</td></tr>
+              <tr><td>Ácido Pantotênico (mg)</td><td class="num-col">5</td><td class="num-col">100%</td></tr>
+              <tr><td>Biotina (mcg)</td><td class="num-col">30</td><td class="num-col">100%</td></tr>
+              <tr><td>Cobre (mcg)</td><td class="num-col">450</td><td class="num-col">50%</td></tr>
+              <tr><td>Cromo (mcg)</td><td class="num-col">18</td><td class="num-col">51%</td></tr>
+              <tr><td>Ferro (mg)</td><td class="num-col">8,1</td><td class="num-col">58%</td></tr>
+              <tr><td>Iodo (mcg)</td><td class="num-col">33</td><td class="num-col">22%</td></tr>
+              <tr><td>Magnésio (mg)</td><td class="num-col">130</td><td class="num-col">31%</td></tr>
+              <tr><td>Manganês (mg)</td><td class="num-col">1,1</td><td class="num-col">37%</td></tr>
+              <tr><td>Molibdênio (mcg)</td><td class="num-col">23</td><td class="num-col">51%</td></tr>
+              <tr><td>Niacina (mg NE)</td><td class="num-col">16</td><td class="num-col">107%</td></tr>
+              <tr><td>Riboflavina (mg)</td><td class="num-col">1,3</td><td class="num-col">108%</td></tr>
+              <tr><td>Selênio (mcg)</td><td class="num-col">20</td><td class="num-col">33%</td></tr>
+              <tr><td>Tiamina (mg)</td><td class="num-col">1,2</td><td class="num-col">100%</td></tr>
+              <tr><td>Vitamina A (mcg RAE)</td><td class="num-col">600</td><td class="num-col">75%</td></tr>
+              <tr><td>Vitamina B12 (mcg)</td><td class="num-col">2,4</td><td class="num-col">100%</td></tr>
+              <tr><td>Vitamina B6 (mg)</td><td class="num-col">1,3</td><td class="num-col">100%</td></tr>
+              <tr><td>Vitamina C (mg)</td><td class="num-col">45</td><td class="num-col">45%</td></tr>
+              <tr><td>Vitamina D (mcg)</td><td class="num-col">5</td><td class="num-col">33%</td></tr>
+              <tr><td>Vitamina E (mg)</td><td class="num-col">10</td><td class="num-col">67%</td></tr>
+              <tr><td>Vitamina K (mcg)</td><td class="num-col">65</td><td class="num-col">54%</td></tr>
+              <tr><td>Zinco (mg)</td><td class="num-col">7</td><td class="num-col">64%</td></tr>
+            </tbody>
+          </table>
+
+          <p class="spec-footnote">
+            Não contém quantidades significativas de Carboidratos, Açúcares Totais, Açúcares Adicionados, Proteínas e Sódio.<br />
+            * Percentual de valores diários fornecidos pela porção.
+          </p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- RODAPÉ SUTIL -->
+    <footer class="slide-footer">
+      <span>Assifarma Farmacêutica • Catálogo Institucional 2026</span>
+      <span>Página 02</span>
+    </footer>
+  </article>
+
+</body>
+</html>
